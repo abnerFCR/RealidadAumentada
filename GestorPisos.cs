@@ -14,9 +14,18 @@ namespace Espacios
         // Start is called before the first frame update
         void Start()
         {
+
+            if(Pisos.primera){
+                for (int i = 0; i < 3; i++)
+                {
+                    Espacio espacio = new Espacio(false, 0, 0, 0, 0, 0);
+                    Pisos.espacios[i] = espacio;
+                }
+                Pisos.primera= !Pisos.primera;
+            }
             for(int i = 0 ; i < 3 ; i++ )
             {
-                if(Pisos.espacios[i].getEstado())
+                if(Pisos.espacios[i].getEstado()==true)
                 {
                     this.setParedes(Pisos.espacios[i].getPiso());
                     this.setColor(Pisos.espacios[i].getPiso(),Pisos.espacios[i].getIluminacion());
@@ -26,12 +35,11 @@ namespace Espacios
                 }
                 else
                 {
-                    this.ClearChildren(Pisos.espacios[i].getPiso());
+                    //this.ClearChildren(Pisos.espacios[i].getPiso());
                 }
             }
 
         }
-
 
         public void setColor(int piso, int iluminacion)
         {
@@ -166,10 +174,10 @@ namespace Espacios
                 DestroyImmediate(child.gameObject);
             }
             */
-            for(int j =0; j < allChildren.Length; j++){
+            
+            for(int j =1; j < allChildren.Length; j++){
                 DestroyImmediate(allChildren[j].gameObject);
             }
-
             //Debug.Log(GameObject.Find("ImageTargetPiso"+(piso+1)).transform.childCount);
         }
     }

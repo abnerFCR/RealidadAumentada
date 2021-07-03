@@ -69,6 +69,10 @@ namespace Espacios
                 Pisos.espacios[ddlPiso.value] = espacio;
                 SceneManager.LoadScene("EliminadoExito");
             }
+            else
+            {
+                SceneManager.LoadScene("ErrorEliminar");
+            }
         }
 
         public string ObtenerEstado(){

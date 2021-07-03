@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
 
 namespace Espacios
 {
@@ -39,10 +40,12 @@ namespace Espacios
             if(Pisos.espacios[ddlPiso.value].getEstado())
             {
                 //El piso ya esta ocupado
+                Pisos.EscribirEnBitacora("ERROR","Se intento crear un espacio sobre un piso ocupado.");
                 SceneManager.LoadScene("PisoOcupado");
             }
             else if(ddlSilla.value == ddlEscritorio.value)
             {
+                Pisos.EscribirEnBitacora("ERROR","Se intento colocar la silla y el escritorio en el mismo lugar.");
                 SceneManager.LoadScene("MismoLugar");
                 //la silla y el escritorio ocupan el mismo lugar
             }
@@ -54,6 +57,7 @@ namespace Espacios
                 Pisos.espacios[ddlPiso.value].setPosicionCuadro(ddlCuadro.value);
                 Pisos.espacios[ddlPiso.value].setPosicionEscritorio(ddlEscritorio.value);
                 Pisos.espacios[ddlPiso.value].setPosicionSilla(ddlSilla.value);
+                Pisos.EscribirEnBitacora("ACCION","Se creo creo el espacio "+(ddlPiso.value+1)+" satisfactoriamente");
                 SceneManager.LoadScene("CreadoExito");
             }
             
@@ -67,10 +71,12 @@ namespace Espacios
             {
                 Espacio espacio = new Espacio(false,0,0,0,0,0);
                 Pisos.espacios[ddlPiso.value] = espacio;
+                Pisos.EscribirEnBitacora("ACCION","Se elimino el espacio "+(ddlPiso.value+1)+" de forma correcta.");
                 SceneManager.LoadScene("EliminadoExito");
             }
             else
             {
+                Pisos.EscribirEnBitacora("ERROR", "Se intento liberar un espacio que ya estaba disponible.");
                 SceneManager.LoadScene("ErrorEliminar");
             }
         }
@@ -86,7 +92,9 @@ namespace Espacios
         }
 
 
-        public void VisualizarEspacio(){
+        public void VisualizarEspacio()
+        {
+            Pisos.EscribirEnBitacora("ACCION", "Se ingreso al modo visualizacion.");
             SceneManager.LoadScene("RealidadAumentada1");
         }
 
@@ -96,7 +104,15 @@ namespace Espacios
             
         }
 
+        public static void EscribirEnBitacora(string tipo, string mensaje){
+            string ruta = Application.dataPath + "/bitacora_201603095_201603189.txt";
+            if(!File.Exists(ruta))
+            {
+                File.WriteAllText(ruta, "Bitacora Proyecto \n\n");
+            }
 
+            File.AppendAllText(ruta, "["+tipo+"] "+mensaje+"\n");
+        }
 
     }
 }

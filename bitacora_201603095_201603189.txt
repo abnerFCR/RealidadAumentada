@@ -1,0 +1,24 @@
+Bitacora Proyecto 
+
+[ACCION] Se ingreso al menu de Crear
+[ACCION] Se creo creo el espacio 1 satisfactoriamente
+[ACCION] Se ingreso al menu principal
+[ACCION] Se ingreso al modo visualizacion.
+[ACCION] Se ingreso al menu principal
+[ACCION] Se ingreso al menu de eliminar
+[ACCION] Se elimino el espacio 1 de forma correcta.
+[ACCION] Se ingreso al menu principal
+[ACCION] Se ingreso al menu de Crear
+[ERROR] Se intento colocar la silla y el escritorio en el mismo lugar.
+[ACCION] Se ingreso al menu principal
+[ACCION] Se ingreso al menu de eliminar
+[ACCION] Se ingreso al menu principal
+[ACCION] Se ingreso al menu de Crear
+[ACCION] Se creo creo el espacio 1 satisfactoriamente
+[ACCION] Se ingreso al menu principal
+[ACCION] Se ingreso al menu de eliminar
+[ERROR] Se intento liberar un espacio que ya estaba disponible.
+[ACCION] Se ingreso al menu principal
+[ACCION] Se ingreso al menu de eliminar
+[ACCION] Se elimino el espacio 1 de forma correcta.
+[ACCION] Se ingreso al menu principal
